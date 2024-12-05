@@ -1,0 +1,147 @@
+<!DOCTYPE html> <!-- Объявление формата документа -->
+<html>
+<head> <!-- Техническая информация о документе -->
+<meta charset="UTF-8"> <!-- Определяем кодировку символов документа -->
+<title>...</title> <!-- Задаем заголовок документа -->
+<link rel="stylesheet" type="text/css" href="style.css"> <!-- Подключаем внешнюю таблицу стилей -->
+<script src="script.js"></script> <!-- Подключаем сценарии -->
+</head>
+<style>
+*{
+margin:0;
+padding:0;
+background-color:#ffccee;
+font-size: 20px;
+}
+body{
+ width: 600px;
+  margin: 0 auto;
+  background-color: #ff9500;
+  padding: 0 20px 20px 20px;
+  border: 5px solid black;
+}
+input{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+input[type=text] {
+  border: none;
+  border-bottom: 2px solid red;
+}
+</style>
+<body style="background-image:url('img/car.jpg')">
+ <nav>
+<canvas id="canvas" width="300" height="300">
+  Извините, ваш браузер нет поддерживает&lt;canvas&gt; элемент.
+</canvas>
+<h1>Choosing an Apple</h1>
+<section>
+  <h2>Introduction</h2>
+  <p>This document provides a guide to help with the important task of choosing the correct Apple.</p>
+</section>
+
+<section>
+  <h2>Criteria</h2>
+  <p>
+    There are many different criteria to be considered when choosing an Apple — size, color, firmness, sweetness,
+    tartness...
+  </p>
+</section>
+<section>
+  <h1>Заголовок</h1>
+  <p>Много замечательного контента</p>
+</section>
+<h2>information</h2>
+<img src="auto.jpg" />
+      <ul>
+        <li><a href="">Главная</a></li>
+        <li><a href="">О нас</a></li>
+        <li><a href="">Контакты</a></li>
+      </ul>
+    </nav>
+<table>
+<tr>
+<th> thing1 </th>
+<th> thing2 </th>
+<th> thing3 </th>
+<th> thing4 </th>
+</tr>
+<tr>
+<th> thing5 </th>
+<th> thing6 </th>
+<th> thing7 </th>
+<th> thing8 </th>
+</tr>
+</table>
+<form class="my-form">
+<label for="username">Логин:</label>
+<input id="username" class="username" type="text" name="username" minlength="3" maxlength="20" required>
+<br> 
+<label for="password">Пароль:</label>
+<input id="password" class="password" type="password" name="password" minlength="8" maxlength="20" required>
+ <br>  
+<label for="confirmPassword">Повторите пароль:</label>
+<input id="confirmPassword" class="confirm-password" type="password" name="confirmPassword" minlength="8" maxlength="20" required>
+<br>
+<button type="submit">Отправить</button>
+</form> 
+  <script>
+const form = document.querySelector('.my-form');
+const loginInput = form.querySelector('.username');
+const passwordInput = form.querySelector('.password');
+const confirmPasswordInput = form.querySelector('.confirm-password');
+
+form.addEventListener('submit', (evt) => {
+  // Отменяем действие по умолчанию
+  evt.preventDefault();
+  
+  // Получаем значения полей формы
+  const login = loginInput.value;
+  const password = passwordInput.value;
+  const confirmPassword = confirmPasswordInput.value;
+  
+  // Проверяем, что поля заполнены
+  if (!login || !password || !confirmPassword) {
+    alert('Пожалуйста, заполните все поля');
+    return;
+  }
+  
+  // Проверяем, что имя пользователя содержит только буквы и цифры
+  if (!isValidLogin(login)) {
+    alert('Логин может содержать только буквы на латинице и цифры');
+    return;
+  }
+  
+  // Проверяем, что пароль содержит хотя бы одну заглавную букву, одну строчную букву и одну цифру
+  if (!isValidPassword(password)) {
+    alert('Пароль должен содержать как минимум одну заглавную букву, одну строчную букву и одну цифру');
+    return;
+  }
+  
+  // Проверяем, что пароли совпадают
+  if (password !== confirmPassword) {
+    alert('Пароли не совпадают');
+    return;
+  }
+  
+  // Если всё в порядке, отправляем форму
+  form.submit();
+});
+
+function isValidLogin(login) {
+  // Проверка имени регулярным выражением
+  const pattern = /^[a-zA-Z0-9]+$/;
+  return pattern.test(login);
+}
+
+function isValidPassword(password) {
+  // Проверка пароля регулярным выражением
+  const pattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9]{8,20}$/;
+  return pattern.test(password);
+}
+</script>
+</body>
+</html>
+
